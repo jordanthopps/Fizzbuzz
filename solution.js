@@ -22,17 +22,9 @@ function getNumbers() {
 function generateNumbers(startValue, endValue) {
     let numbers = []
 
-    for (let index = 1; index <= 100; index++) {
+    for (let index = startValue; index <= endValue; index++) {
 
-        if (index % 15 == 0) {
-            numbers.push("FizzBuzz");
-        } else if (index % 3 == 0) {
-            numbers.push("Fizz");
-        } else if (index % 5 == 0) {
-            numbers.push("Buzz");
-        } else {
-            numbers.push(index);
-        }
+        numbers.push(index);
     }
     return numbers;
 }
@@ -40,6 +32,8 @@ function generateNumbers(startValue, endValue) {
 function displayNumbers(numbers) {
 
     //get the table body element from the page
+    let startValue = numbers[0];
+    let endIndex = numbers.length;
     let tableBody = document.getElementById("results")
 
     //get the template to make the table
@@ -49,49 +43,30 @@ function displayNumbers(numbers) {
     tableBody.innerHTML = ""
 
 
-    for (let index = 0; index < numbers.length; index += 5) {
-
-        const tableRow = document.importNode(rowTemplate.content, true)
+    for (let index = 0; index < endIndex; index += 5) {
+        let number = numbers[index];
+        const tableRow = document.importNode(rowTemplate.contentEditable, true)
 
         let rowCols = tableRow.querySelectorAll("td");
 
-        rowCols[0].classList.add(numbers[index]);
-        rowCols[0].textContent = numbers[index];
+        rowCols[0].classList.add(endIndex[i]);
+        rowCols[0].textContent = endIndex[i];
 
-        rowCols[1].classList.add(numbers[index + 1]);
-        rowCols[1].textContent = numbers[index + 1];
+        rowCols[1].classList.add(endIndex[i + 1]);
+        rowCols[1].textContent = endIndex[i + 1];
 
-        rowCols[2].classList.add(numbers[index + 2]);
-        rowCols[2].textContent = numbers[index + 2];
+        rowCols[2].classList.add(endIndex[i + 2]);
+        rowCols[2].textContent = endIndex[i + 2];
 
-        rowCols[3].classList.add(numbers[index + 3]);
-        rowCols[3].textContent = numbers[index + 3];
+        rowCols[3].classList.add(endIndex[i + 3]);
+        rowCols[3].textContent = endIndex[i + 3];
 
-        rowCols[4].classList.add(numbers[index + 4]);
-        rowCols[4].textContent = numbers[index + 4];
+        rowCols[4].classList.add(endIndex[i + 4]);
+        rowCols[4].textContent = endIndex[i + 4];
 
         tableBody.appendChild(tableRow);
 
 
-    }
-}
-
-/* function displayNumbers(numbers) {
-
-    let startValue = numbers[0];
-    let numbers = numbers.length;
-    let tableBody = document.getElementById("results")
-
-    //get the template to make the table
-    let rowTemplate = document.getElementById("fbTemplate");
-
-    //clear the table first
-
-    tableBody.innerHTML = ""
-    for (let index = 0; index < numbers; index++) {
-        let number = numbers[index];
-
-        //Order matters here. Start with the most stringent case.
         if (number % 15 == 0) {
             tableRow = `<tr><td>FizzBuzz</td></tr>`
         } else if (number % 3 == 0) {
@@ -104,7 +79,7 @@ function displayNumbers(numbers) {
 
         tableBody.innerHTML += tableRow;
     }
-}*/
+}
 
 /* function checkInputs(startValue, endValue) {
 
