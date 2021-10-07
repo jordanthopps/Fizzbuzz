@@ -22,7 +22,7 @@ function getNumbers() {
 function generateNumbers(startValue, endValue) {
     let numbers = []
 
-    for (let index = 1; index <= 100; index++) {
+    for (let index = startValue; index <= endValue; index++) {
 
         if (index % 15 == 0) {
             numbers.push("FizzBuzz");
